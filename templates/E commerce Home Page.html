@@ -97,36 +97,23 @@
             <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Featured Products</h2>
             <div class="flex overflow-y-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
               <div class="flex items-stretch p-4 gap-3">
-                <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
-                  <div
-                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col"
-                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBIjR-E530mVCX0lvu64md0I3D7YyHwxmKNA0MACEtgELXUmm8_ZWYe-27O2Nsj1M4pY-zhxOyiJjapa098dkdTiPa7PORb-H2dNGVcdO-jfE4BgdTk_ZpBbKGq6US75JvjqSWP7pRC1ijd3zTYNbIwWzoAbsdQOznC4EQsnX-MqTryco7-H3eGEqQJmmJqVU2zwCH3i2_XtUmHQeKbvI2N1V2hfQroixe5swd3Pv8WJtR5gfhp_KKAZLj5D4LqgD4X-mSpuL_0ykto");'
-                  ></div>
-                  <div>
-                    <p class="text-white text-base font-medium leading-normal">Floral Essence</p>
-                    <p class="text-[#92c8be] text-sm font-normal leading-normal">A delicate fragrance for everyday wear.</p>
+                {% if products %}
+                  {% for product in products %}
+                  <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
+                    <div
+                      class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col"
+                      style='background-image: url("{{ product.image_url }}");'
+                    ></div>
+                    <div>
+                      <p class="text-white text-base font-medium leading-normal">{{ product.name }}</p>
+                      <p class="text-[#92c8be] text-sm font-normal leading-normal">{{ product.description }}</p>
+                      <p class="text-white text-sm font-semibold leading-normal">Price: ${{ "%.2f"|format(product.price) }}</p>
+                    </div>
                   </div>
-                </div>
-                <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
-                  <div
-                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col"
-                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDQuXh0jc-jO5lFxr8n_CO7-oTV1Ng1ypgPsWbh8w-bdHMxywC2VGG7Pmd40vMKKgvO0j0Y0jDKAGHegc_8_-v_PDhv74J2zFmF36055XUKr1Iv7m2n5EZyXn73OkN-HFoaB0wp1YzKrtEFOEsPBCFBeP8Eeln1pti5xDfRkyL3FFemcWHMf1xdKyDJjTcE_6KUlJNm4ij5HORog5FcJxuP9vAV777MPUlno8VkDA3BLoX92IA9xecNjmc8Qkp0TM3QW4zzCjTI1Suq");'
-                  ></div>
-                  <div>
-                    <p class="text-white text-base font-medium leading-normal">Classic Timepiece</p>
-                    <p class="text-[#92c8be] text-sm font-normal leading-normal">Elegant design with precision movement.</p>
-                  </div>
-                </div>
-                <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
-                  <div
-                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col"
-                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCYemDz0NhpUiYToTCLA_yPjrQfkmDSPdspoGNdEmZPQGHXvMB0X-hRM5Upe7zqpkSG6UhGmUDBppfskA1v8d9FYxK665bwQmkxRL4YdguzA5fYcPQf314ua9X26vO50kvUwE2l5gVqb85BBcBrZRdoAmPU8mbRXVfVHLwCwkZF6iYmuU5QmPQd_-SXKY1p64aiJUqrj6eYCbx2w4aFjOxWY4wVH5xBXz51DueB-yfbtULqDA26InjKt49ijUd8ZKbawqYpRxQJWg9T");'
-                  ></div>
-                  <div>
-                    <p class="text-white text-base font-medium leading-normal">Beauty Essentials</p>
-                    <p class="text-[#92c8be] text-sm font-normal leading-normal">Complete set for a flawless look.</p>
-                  </div>
-                </div>
+                  {% endfor %}
+                {% else %}
+                  <p class="text-white">No products featured at the moment.</p>
+                {% endif %}
               </div>
             </div>
             <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">New Arrivals</h2>
