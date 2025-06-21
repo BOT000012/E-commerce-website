@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ title }} - Luxe E-commerce{% endblock %}
+
+{% block content %}
+<div class="px-4 md:px-40 flex flex-1 justify-center py-5">
+  <div class="layout-content-container flex flex-col max-w-2xl w-full flex-1 bg-[#1A2D2A] p-8 rounded-xl shadow-xl">
+    <h2 class="text-white text-3xl font-bold leading-tight tracking-[-0.015em] mb-6 text-center">{{ title }}</h2>
+
+    {# Flash messages #}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="p-3 mb-4 rounded-md text-sm
+            {% if category == 'danger' %} bg-red-500 text-white
+            {% elif category == 'success' %} bg-green-500 text-white
+            {% elif category == 'info' %} bg-blue-500 text-white
+            {% else %} bg-gray-500 text-white {% endif %}"
+            role="alert">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <div class="text-white">
+      <p class="text-lg mb-4">Welcome to your account page, <strong class="font-semibold">{{ current_user.username }}</strong>!</p>
+      <p class="mb-2">Your email is: {{ current_user.email }}</p>
+      <p class="text-gray-400 text-sm">This is a placeholder page. More account management features will be added later.</p>
+
+      <div class="mt-8 border-t border-gray-700 pt-6">
+        <h3 class="text-xl font-semibold text-white mb-3">Placeholder Actions</h3>
+        <ul class="list-disc list-inside text-gray-300">
+            <li>View Order History (Coming Soon)</li>
+            <li>Update Profile (Coming Soon)</li>
+            <li>Change Password (Coming Soon)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

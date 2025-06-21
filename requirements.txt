@@ -1,2 +1,5 @@
 Flask
 Flask-SQLAlchemy
+Flask-Login
+Flask-WTF
+Email-validator # Often used with WTForms for email validation
